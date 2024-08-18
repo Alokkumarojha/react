@@ -10,19 +10,21 @@ const Post = ({ post }) => {
         <h5 className="card-title">{post.title}</h5>
         <span
           className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-          onClick={() => deletePost(post.id)}
+          onClick={() => deletePost && deletePost(post.id)}
         >
           <MdDeleteForever />
         </span>
         <p className="card-text">{post.body}</p>
 
-        {post.tags && Array.isArray(post.tags)
-          ? post.tags.map((tag) => (
+        {post.tags && Array.isArray(post.tags) && post.tags.length > 0 && (
+          <div className="tags-container">
+            {post.tags.map((tag) => (
               <span key={tag} className="badge text-bg-primary has-tags">
                 {tag}
               </span>
-            ))
-          : null}
+            ))}
+          </div>
+        )}
 
         {post.reactions && typeof post.reactions === "object" ? (
           <div className="alert alert-danger reactions" role="alert">
@@ -33,9 +35,12 @@ const Post = ({ post }) => {
             </ul>
           </div>
         ) : (
-          <div className="alert alert-danger reactions" role="alert">
-            This post has been reacted to by {post.reactions || 0} people
-          </div>
+          typeof post.reactions === "number" &&
+          post.reactions > 0 && (
+            <div className="alert alert-danger reactions" role="alert">
+              This post has been reacted to by {post.reactions} people
+            </div>
+          )
         )}
       </div>
     </div>
