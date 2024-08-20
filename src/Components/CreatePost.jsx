@@ -15,7 +15,7 @@ function CreatePost() {
     const postTitle = titleElement.current.value;
     const postBody = userBodyElement.current.value;
     const reactions = reactionsElement.current.value;
-    const tags = tagsElement.current.value.split(/\s+/);
+    const tags = tagsElement.current.value.split(" ");
 
     userIdElement.current.value = "";
     titleElement.current.value = "";
@@ -23,7 +23,6 @@ function CreatePost() {
     reactionsElement.current.value = "";
     tagsElement.current.value = "";
 
-    console.log("sending fetch to server");
     fetch("https://dummyjson.com/posts/add", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -37,7 +36,6 @@ function CreatePost() {
     })
       .then((res) => res.json())
       .then((post) => {
-        console.log("got response for server", post);
         addPost(post);
       });
 
