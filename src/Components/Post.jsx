@@ -32,8 +32,8 @@ const Post = ({ post }) => {
           <div className="alert alert-danger reactions" role="alert">
             <p>This post has:</p>
             <ul>
-              <li>{post.reactions.likes || 0} likes</li>
-              <li>{post.reactions.dislikes || 0} dislikes</li>
+              <li>{post.reactions.likes || 0} likes.</li>
+              <li>{post.reactions.dislikes || 0} dislikes.</li>
             </ul>
           </div>
         ) : (
