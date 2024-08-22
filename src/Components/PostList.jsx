@@ -1,10 +1,11 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import Post from "./Post";
 import { PostList as PostListData } from "../Store/post-list-store";
 import Wellcommassage from "./Wellcommassage";
 import LoadingSpinner from "./LoadingSpinner";
 
 const PostList = () => {
+  
   const { postList, fetching } = useContext(PostListData);
 
   return (
