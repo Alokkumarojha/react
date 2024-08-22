@@ -1,8 +1,6 @@
 import React, { useContext, useRef } from "react";
 import { PostList } from "../Store/post-list-store";
-import { useNavigate } from 'react-router-dom';
-
-
+import { useNavigate } from "react-router-dom";
 
 function CreatePost() {
   const { addPost } = useContext(PostList);
@@ -42,14 +40,13 @@ function CreatePost() {
       .then((res) => res.json())
       .then((post) => {
         addPost(post);
-        navigate("/")
+        navigate("/");
       });
-      
 
     if (!userId || !postTitle || !postBody || isNaN(reactions)) {
       alert("Please fill in all fields correctly."); // Basic validation
       return;
-     }
+    }
 
     addPost(userId, postTitle, postBody, reactions, tags);
   };
